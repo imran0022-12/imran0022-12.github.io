@@ -6,172 +6,34 @@
 <title>Imran Arif - Web Developer Portfolio</title>
 
 <style>
-    /* Google Font */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Poppins', sans-serif;
-        background: #0d0d0d;
-        color: #fff;
-    }
-
-    /* Smooth Scroll */
-    html {
-        scroll-behavior: smooth;
-    }
-
-    /* NAVBAR */
-    nav {
-        position: fixed;
-        width: 100%;
-        top: 0;
-        left: 0;
-        background: rgba(0, 0, 0, 0.8);
-        padding: 15px 30px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        backdrop-filter: blur(8px);
-        z-index: 1000;
-    }
-    nav a {
-        color: #fff;
-        margin-left: 20px;
-        text-decoration: none;
-        font-size: 15px;
-        transition: 0.3s;
-    }
-    nav a:hover {
-        color: #4cdfff;
-    }
-
-    /* HERO */
-    .hero {
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        text-align: center;
-        padding: 0 20px;
-    }
-
-    .hero h1 {
-        font-size: 50px;
-        margin: 0;
-        font-weight: 700;
-    }
-
-    .typewriter {
-        color: #4cdfff;
-        font-size: 22px;
-        border-right: 2px solid #4cdfff;
-        white-space: nowrap;
-        overflow: hidden;
-        width: 0;
-        animation: typing 4s steps(40) forwards, blink 0.7s infinite;
-        margin-top: 10px;
-    }
-
-    @keyframes typing {
-        from { width: 0; }
-        to { width: 280px; }
-    }
-
-    @keyframes blink {
-        50% { border-color: transparent; }
-    }
-
-    /* SECTIONS */
-    section {
-        padding: 80px 10%;
-    }
-
-    .section-title {
-        font-size: 30px;
-        margin-bottom: 20px;
-        color: #4cdfff;
-    }
-
-    /* PROJECTS */
-    .projects {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 25px;
-    }
-
-    .project-card {
-        background: #1a1a1a;
-        padding: 20px;
-        border-radius: 10px;
-        transition: transform .3s, box-shadow .3s;
-        border: 1px solid #333;
-    }
-
-    .project-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 0 20px #4cdfff55;
-    }
-
-    .project-card h3 {
-        margin: 0 0 10px;
-        color: #4cdfff;
-    }
-
-    .project-card a {
-        color: #4cdfff;
-        text-decoration: none;
-        font-size: 14px;
-    }
-
-    /* SKILLS */
-    .skills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-
-    .skill {
-        background: #1e1e1e;
-        padding: 10px 18px;
-        border-radius: 20px;
-        border: 1px solid #333;
-        font-size: 14px;
-        transition: .3s;
-    }
-
-    .skill:hover {
-        background: #4cdfff;
-        color: #000;
-    }
-
-    /* CONTACT */
-    .contact-box {
-        background: #1a1a1a;
-        padding: 20px;
-        border-radius: 10px;
-        border: 1px solid #444;
-    }
-
-    /* ANIMATION: Fade In on Scroll */
-    .reveal {
-        opacity: 0;
-        transform: translateY(50px);
-        transition: all 0.8s ease;
-    }
-    .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
+    body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; background: #0d0d0d; color: #fff; }
+    html { scroll-behavior: smooth; }
+    nav { position: fixed; width: 100%; top: 0; left: 0; background: rgba(0, 0, 0, 0.8); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(8px); z-index: 1000; }
+    nav a { color: #fff; margin-left: 20px; text-decoration: none; font-size: 15px; transition: 0.3s; }
+    nav a:hover { color: #4cdfff; }
+    .hero { height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; padding: 0 20px; }
+    .hero h1 { font-size: 50px; margin: 0; font-weight: 700; }
+    .typewriter { color: #4cdfff; font-size: 22px; border-right: 2px solid #4cdfff; white-space: nowrap; overflow: hidden; width: 0; animation: typing 4s steps(40) forwards, blink 0.7s infinite; margin-top: 10px; }
+    @keyframes typing { from { width: 0; } to { width: 280px; } }
+    @keyframes blink { 50% { border-color: transparent; } }
+    section { padding: 80px 10%; }
+    .section-title { font-size: 30px; margin-bottom: 20px; color: #4cdfff; }
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+    .project-card { background: #1a1a1a; padding: 20px; border-radius: 10px; transition: transform .3s, box-shadow .3s; border: 1px solid #333; }
+    .project-card:hover { transform: translateY(-8px); box-shadow: 0 0 20px #4cdfff55; }
+    .project-card h3 { margin: 0 0 10px; color: #4cdfff; }
+    .project-card a { color: #4cdfff; text-decoration: none; font-size: 14px; }
+    .skills { display: flex; flex-wrap: wrap; gap: 15px; }
+    .skill { background: #1e1e1e; padding: 10px 18px; border-radius: 20px; border: 1px solid #333; font-size: 14px; transition: .3s; }
+    .skill:hover { background: #4cdfff; color: #000; }
+    .contact-box { background: #1a1a1a; padding: 20px; border-radius: 10px; border: 1px solid #444; }
+    .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
 </style>
-
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
     <div><strong>IMRAN ARIF</strong></div>
     <div>
@@ -184,90 +46,81 @@
     </div>
 </nav>
 
-<!-- HERO SECTION -->
 <section class="hero">
     <h1>Hello, I'm <span style="color:#4cdfff;">Imran Arif</span></h1>
     <div class="typewriter">Full Stack Web Developer</div>
 </section>
 
-<!-- ABOUT -->
 <section id="about" class="reveal">
     <h2 class="section-title">About Me</h2>
     <p>
-        Motivated and detail-oriented Web Developer with hands-on experience in building dynamic,
-        responsive, and scalable web applications using Laravel and Vue.js. Proficient in designing
-        RESTful APIs, managing databases, and integrating front-end and back-end components to deliver
-        seamless user experiences.
+        Passionate Full Stack Developer experienced in Laravel, Vue.js, REST APIs, automation systems,
+        AI integrations, CRM development, e-commerce platforms, custom SaaS solutions, and scalable
+        backend architecture. Dedicated to writing clean code, improving performance, and delivering
+        high-quality user-focused applications.
     </p>
 </section>
 
-<!-- SKILLS -->
 <section id="skills" class="reveal">
     <h2 class="section-title">Skills</h2>
     <div class="skills">
-        <div class="skill">HTML</div>
-        <div class="skill">CSS</div>
-        <div class="skill">Bootstrap</div>
-        <div class="skill">JavaScript</div>
-        <div class="skill">PHP</div>
-        <div class="skill">Laravel</div>
-        <div class="skill">Vue.js</div>
-        <div class="skill">REST APIs</div>
-        <div class="skill">Mailgun</div>
-        <div class="skill">Twilio</div>
-        <div class="skill">Stripe Payment</div>
-        <div class="skill">Google Maps</div>
-        <div class="skill">Gmail API</div>
-        <div class="skill">OpenAI API</div>
+        <div class="skill">HTML</div><div class="skill">CSS</div><div class="skill">Bootstrap</div><div class="skill">Tailwind CSS</div><div class="skill">JavaScript</div><div class="skill">Vue.js</div><div class="skill">Vue Router</div><div class="skill">Pinia</div>
+        <div class="skill">PHP</div><div class="skill">Laravel</div><div class="skill">Livewire</div><div class="skill">REST APIs</div><div class="skill">MySQL</div>
+        <div class="skill">Stripe</div><div class="skill">PayPal</div><div class="skill">Twilio</div><div class="skill">Mailgun</div>
+        <div class="skill">Firebase</div><div class="skill">Google Maps</div><div class="skill">Gmail API</div>
+        <div class="skill">OpenAI API</div><div class="skill">ElevenLabs API</div><div class="skill">Web Scraping</div>
+        <div class="skill">Linux Server</div><div class="skill">cPanel / VPS</div>
     </div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects" class="reveal">
     <h2 class="section-title">Projects</h2>
     <div class="projects">
-
+        <div class="project-card">
+            <h3>Buildors CRM</h3>
+            <p>Full CRM system with tasks, pipelines, automation, email/SMS, AI voice, and client management.</p>
+            <a href="https://buildors.com" target="_blank">Visit Project →</a>
+        </div>
+        <div class="project-card">
+            <h3>CVMeetup</h3>
+            <p>Video profile & CV-based job matching platform built with Laravel + Vue.</p>
+            <a href="https://cvmeetup.com" target="_blank">Visit Project →</a>
+        </div>
         <div class="project-card">
             <h3>Mr. Furniture USA</h3>
-            <p>E-commerce platform built using Laravel & Vue.js with product filtering, cart, and Stripe integration.</p>
-            <a href="https://mrfurnitureusa.com/" target="_blank">Visit Project →</a>
+            <p>E-commerce platform with cart, filters, payments, and admin panel.</p>
+            <a href="https://mrfurnitureusa.com" target="_blank">Visit Project →</a>
         </div>
-
         <div class="project-card">
             <h3>Bulk Email Campaign System</h3>
-            <p>
-                A Laravel-based bulk email sending system supporting Mailgun, Gmail, Yahoo, Outlook, rotation,
-                limits, and logging.
-            </p>
-            <a href="https://emails.oddial.com/" target="_blank">Visit Project →</a>
+            <p>Advanced email rotation, domain warmup, logs, and analytics using Laravel.</p>
+            <a href="https://emails.oddial.com" target="_blank">Visit Project →</a>
         </div>
-
         <div class="project-card">
-            <h3>Odshop – Instant Online Store Builder</h3>
-            <p>
-                A Laravel + Vue.js platform where users create a full online store with themes in minutes.
-            </p>
-            <a href="https://odshops.com/" target="_blank">Visit Project →</a>
+            <h3>Odshop – Online Store Builder</h3>
+            <p>Create fully functional online stores with themes and inventory.</p>
+            <a href="https://odshops.com" target="_blank">Visit Project →</a>
         </div>
-
     </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience" class="reveal">
     <h2 class="section-title">Experience</h2>
     <p><strong>Full Stack Web Developer – Intelliage Solutions</strong> (2023 - Present)</p>
-    <p>Worked on Laravel, Vue.js, API integrations, e-commerce systems, automation tools, and marketing systems.</p>
+    <ul>
+        <li>Developed multiple SaaS platforms including CRM, automation tools, and marketing systems.</li>
+        <li>Integrated OpenAI, ElevenLabs, Twilio, Gmail API, Google Maps, Stripe, PayPal, and more.</li>
+        <li>Built scraping services, job fetchers, auto-email responders, and AI text + voice systems.</li>
+        <li>Improved system performance and optimized database structures.</li>
+    </ul>
 </section>
 
-<!-- EDUCATION -->
 <section id="education" class="reveal">
     <h2 class="section-title">Education</h2>
     <p><strong>Bachelor in Computer Science</strong> – Virtual University</p>
     <p><strong>Diploma in Software Technology</strong> – Intelliage Trainings</p>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="reveal">
     <h2 class="section-title">Contact</h2>
     <div class="contact-box">
@@ -278,17 +131,16 @@
 </section>
 
 <script>
-    // Scroll Reveal Animation
-    const reveals = document.querySelectorAll(".reveal");
-    window.addEventListener("scroll", () => {
-        for (let i = 0; i < reveals.length; i++) {
-            let windowHeight = window.innerHeight;
-            let elementTop = reveals[i].getBoundingClientRect().top;
-            if (elementTop < windowHeight - 100) {
-                reveals[i].classList.add("active");
-            }
+const reveals = document.querySelectorAll(".reveal");
+window.addEventListener("scroll", () => {
+    for (let i = 0; i < reveals.length; i++) {
+        let windowHeight = window.innerHeight;
+        let elementTop = reveals[i].getBoundingClientRect().top;
+        if (elementTop < windowHeight - 100) {
+            reveals[i].classList.add("active");
         }
-    });
+    }
+});
 </script>
 
 </body>
