@@ -13,69 +13,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
 <!-- Particles.js -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Imran Arif - Full Stack Web Developer Portfolio</title>
-<link rel="icon" href="https://cdn-icons-png.flaticon.com/128/3344/3344358.png" type="image/png">
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<!-- Animate.css -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
-<!-- Particles.js -->
-<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
-<style>
-:root{
-    --primary: #4cdfff;
-    --primary-gradient: linear-gradient(90deg,#4cdfff,#0f9fff);
-    --dark-bg: #0a0a0a;
-    --dark-card: #111;
-    --dark-text: #fff;
-    --transition: 0.5s ease-in-out;
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family:'Poppins',sans-serif;
-    background: var(--dark-bg);
-    color: var(--dark-text);
-    transition: background var(--transition), color var(--transition);
-    scroll-behavior: smooth;
-
-/* Navbar */
-nav{
-    position: fixed;
-    width:100%;
-    top:0;
-    padding:15px 30px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    backdrop-filter:blur(10px);
-    z-index:1000;
-    border-bottom:1px solid #44444444;
-}
-nav a{
-    margin-left:20px;
-    color:var(--primary);
-    text-decoration:none;
-    font-weight:500;
-    font-size:15px;
-    position:relative;
-    transition:0.3s;
-}
-nav a::after{
-    content:'';
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
 
 <style>
@@ -217,16 +154,16 @@ section{
 
 /* Project slider */
 .project-slider{
-    display:flex;
     overflow:hidden;
-    gap:25px;
+    margin: 0 -10px; /* small negative margin for spacing */
 }
 .project-slider-inner{
     display:flex;
+    gap:20px; /* spacing between cards */
     transition: transform 0.5s ease-in-out;
 }
 .project-card{
-    flex:0 0 calc(33.33% - 16px);
+    flex:0 0 calc(33.333% - 13.33px); /* 3 cards visible with gap */
     padding:25px;
     border-radius:12px;
     transition:0.3s;
@@ -432,7 +369,7 @@ function setTheme(mode){
 toggleBtn.onclick=()=>setTheme(bodyEl.classList.contains("dark")?"light":"dark");
 setTheme(localStorage.getItem("theme")||"dark");
 
-// Project slider auto
+// Project slider auto with proper spacing
 const sliderInner = document.getElementById('project-slider-inner');
 let currentIndex = 0;
 const totalProjects = sliderInner.children.length;
@@ -444,5 +381,6 @@ setInterval(() => {
     sliderInner.style.transform = `translateX(-${(100/visible)*currentIndex}%)`;
 }, 1000);
 </script>
+
 </body>
 </html>
