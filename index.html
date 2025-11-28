@@ -11,6 +11,7 @@
 
 <!-- Animate.css -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
 <!-- Particles.js -->
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
 
@@ -153,16 +154,16 @@ section{
 
 /* Project slider */
 .project-slider{
+    display:flex;
     overflow:hidden;
-    margin: 0 -10px; /* small negative margin for spacing */
+    gap:25px;
 }
 .project-slider-inner{
     display:flex;
-    gap:20px; /* spacing between cards */
     transition: transform 0.5s ease-in-out;
 }
 .project-card{
-    flex:0 0 calc(33.333% - 13.33px); /* 3 cards visible with gap */
+    flex:0 0 calc(33.33% - 16px);
     padding:25px;
     border-radius:12px;
     transition:0.3s;
@@ -368,7 +369,7 @@ function setTheme(mode){
 toggleBtn.onclick=()=>setTheme(bodyEl.classList.contains("dark")?"light":"dark");
 setTheme(localStorage.getItem("theme")||"dark");
 
-// Project slider auto with proper spacing
+// Project slider auto
 const sliderInner = document.getElementById('project-slider-inner');
 let currentIndex = 0;
 const totalProjects = sliderInner.children.length;
@@ -380,6 +381,5 @@ setInterval(() => {
     sliderInner.style.transform = `translateX(-${(100/visible)*currentIndex}%)`;
 }, 1000);
 </script>
-
 </body>
 </html>
