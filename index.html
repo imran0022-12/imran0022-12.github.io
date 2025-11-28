@@ -14,6 +14,7 @@
 
 <!-- Particles.js -->
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+
 <style>
 :root{
     --primary: #4cdfff;
@@ -21,6 +22,9 @@
     --dark-bg: #0a0a0a;
     --dark-card: #111;
     --dark-text: #fff;
+    --light-bg: #fff;
+    --light-card: #f3f3f3;
+    --light-text: #121212;
     --transition: 0.5s ease-in-out;
 }
 
@@ -38,6 +42,11 @@ body{
     scroll-behavior: smooth;
 }
 
+body.light{
+    background: var(--light-bg);
+    color: var(--light-text);
+}
+
 /* Navbar */
 nav{
     position: fixed;
@@ -53,13 +62,14 @@ nav{
 }
 nav a{
     margin-left:20px;
-    color:var(--primary);
     text-decoration:none;
     font-weight:500;
     font-size:15px;
     position:relative;
     transition:0.3s;
 }
+body.dark nav a{ color: var(--primary);}
+body.light nav a{ color: #0f9fff;}
 nav a::after{
     content:'';
     display:block;
@@ -76,13 +86,13 @@ nav a:hover::after{ width:100%; }
 #theme-toggle{
     cursor:pointer;
     padding:8px 14px;
-    background: var(--primary);
     border-radius:7px;
-    color:black;
     font-size:14px;
     border:none;
     transition:0.3s;
 }
+body.dark #theme-toggle{ background: var(--primary); color:black; }
+body.light #theme-toggle{ background: #0f9fff; color:white; }
 #theme-toggle:hover{ transform:scale(1.1); }
 
 /* Hero */
@@ -142,8 +152,18 @@ section{
     -webkit-text-fill-color:transparent;
 }
 
-/* Project Cards */
-.project-card, .contact-box{
+/* Project slider */
+.project-slider{
+    display:flex;
+    overflow:hidden;
+    gap:25px;
+}
+.project-slider-inner{
+    display:flex;
+    transition: transform 0.5s ease-in-out;
+}
+.project-card{
+    flex:0 0 calc(33.33% - 16px);
     padding:25px;
     border-radius:12px;
     transition:0.3s;
@@ -151,13 +171,12 @@ section{
     cursor:pointer;
     background: var(--dark-card);
 }
+body.light .project-card{ background: var(--light-card);}
 .project-card:hover{
     transform:translateY(-12px) scale(1.03);
     box-shadow:0 0 40px #4cdfff99;
 }
-.project-card h3{
-    transition:transform 0.3s;
-}
+.project-card h3{ transition: transform 0.3s; }
 .project-card:hover h3{ transform:scale(1.05); }
 
 /* Skills */
@@ -175,15 +194,12 @@ section{
     transition:0.3s;
     animation: floatSkill 4s ease-in-out infinite alternate;
 }
+body.light .skill{ background:#e2e2e2; border-color:#ccc;}
 @keyframes floatSkill{
     0%{ transform:translateY(0px);}
     100%{ transform:translateY(-5px);}
 }
-.skill:hover{
-    background:var(--primary);
-    color:black;
-    transform:scale(1.1);
-}
+.skill:hover{ background:var(--primary); color:black; transform:scale(1.1); }
 
 /* Reveal */
 .reveal{
@@ -191,20 +207,14 @@ section{
     transform:translateY(50px);
     transition:all 0.8s ease;
 }
-.reveal.active{
-    opacity:1;
-    transform:translateY(0);
-}
+.reveal.active{ opacity:1; transform:translateY(0); }
 
 /* Image hover */
-img{
-    transition: transform 0.5s;
-}
-img:hover{ transform: scale(1.05) rotate(-1deg); }
-
+img{ transition: transform 0.5s;}
+img:hover{ transform: scale(1.05) rotate(-1deg);}
 </style>
 </head>
-<body>
+<body class="dark">
 
 <!-- Navbar -->
 <nav>
@@ -235,9 +245,10 @@ img:hover{ transform: scale(1.05) rotate(-1deg); }
     <div style="display:flex;flex-wrap:wrap;gap:30px;align-items:center;">
         <img src="https://scontent.flhe41-1.fna.fbcdn.net/v/t39.30808-6/472375241_2018574985236821_7956161804888883337_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=TTe_f7zckYYQ7kNvwEKToIX&_nc_oc=AdlWH4aZQrH55UuSWMeMtV22HLg97q7ZEqn_bUh9Ws6okbDlXmh3xGWMimGK0Gcg47s&_nc_zt=23&_nc_ht=scontent.flhe41-1.fna&_nc_gid=gzHc2OJjPvLeQ0tBoWuxHQ&oh=00_AfhLXUhXYfeIJH-0hzv_Q2bhy4d1Pne1NgE8LJ-wetoQeQ&oe=692EE038" style="width:180px;height:180px;border-radius:50%;object-fit:cover;border:3px solid var(--primary);" />
         <div style="flex:1;">
-            <p>I am a passionate <strong>Full Stack Web Developer</strong> building modern web apps, CRM systems, AI tools.</p>
-            <p>Expertise: <strong>Laravel, Vue.js, APIs, Realtime Features, Scraping, Cloud Deployment, AI APIs</strong>.</p>
-            <p>Focus: Performance, scalability, maintainable code, modern UI/UX, and teamwork.</p>
+            <p>I am a passionate and highly motivated <strong>Full Stack Web Developer</strong> with hands-on experience building modern web applications, CRM systems, SaaS dashboards, automation tools and AI-powered platforms.</p>
+            <p>My expertise includes <strong>Laravel, Vue.js, REST APIs, real-time features, scraping, cloud deployment, payment integrations, email/SMS systems, microservices, and AI APIs</strong>.</p>
+            <p>I specialize in creating performance-optimized, scalable, and secure web systems designed for business growth. I enjoy solving deep technical problems, enhancing product workflows, building automation, and delivering solutions that save time and generate real results.</p>
+            <p>I am always focused on clean code, modern UI/UX, teamwork, and long-term maintainability.</p>
         </div>
     </div>
 </section>
@@ -252,29 +263,42 @@ img:hover{ transform: scale(1.05) rotate(-1deg); }
         <div class="skill">PHP</div><div class="skill">Laravel</div><div class="skill">Livewire</div>
         <div class="skill">MySQL</div><div class="skill">REST APIs</div>
         <div class="skill">Stripe</div><div class="skill">PayPal</div><div class="skill">Twilio</div>
-        <div class="skill">Mailgun</div><div class="skill">Firebase</div><div class="skill">OpenAI API</div>
-        <div class="skill">ElevenLabs API</div><div class="skill">Scraping</div><div class="skill">Linux Server</div>
+        <div class="skill">Mailgun</div><div class="skill">Firebase</div><div class="skill">Google Maps</div>
+        <div class="skill">Gmail API</div><div class="skill">OpenAI API</div><div class="skill">ElevenLabs API</div>
+        <div class="skill">Scraping</div><div class="skill">Linux Server</div><div class="skill">cPanel/VPS</div>
     </div>
 </section>
 
-<!-- Projects -->
+<!-- Projects Slider -->
 <section id="projects" class="reveal">
     <h2 class="section-title">Projects</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;">
-        <div class="project-card">
-            <h3>Buildors CRM</h3>
-            <p>Automation CRM with tasks, pipelines, AI chat/voice, email/SMS marketing, invoices & integrations.</p>
-            <a href="https://buildors.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
-        </div>
-        <div class="project-card">
-            <h3>CVMeetup</h3>
-            <p>Job matching platform with video profiles, employer dashboard, AI CV scanning & messaging.</p>
-            <a href="https://cvmeetup.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
-        </div>
-        <div class="project-card">
-            <h3>Mr. Furniture</h3>
-            <p>E-commerce with cart, order tracking & Stripe integration.</p>
-            <a href="https://mrfurnitureusa.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
+    <div class="project-slider">
+        <div class="project-slider-inner" id="project-slider-inner">
+            <div class="project-card">
+                <h3>Buildors CRM</h3>
+                <p>Automation CRM with tasks, pipelines, AI chat/voice, email/SMS marketing, invoices & integrations.</p>
+                <a href="https://buildors.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
+            </div>
+            <div class="project-card">
+                <h3>CVMeetup</h3>
+                <p>Job matching platform with video profiles, employer dashboard, AI CV scanning & messaging.</p>
+                <a href="https://cvmeetup.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
+            </div>
+            <div class="project-card">
+                <h3>Mr. Furniture</h3>
+                <p>E-commerce with cart, order tracking & Stripe integration.</p>
+                <a href="https://mrfurnitureusa.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
+            </div>
+            <div class="project-card">
+                <h3>Bulk Email System</h3>
+                <p>High-volume email rotation system with warmup, analytics, logs & multi-provider support.</p>
+                <a href="https://emails.oddial.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
+            </div>
+            <div class="project-card">
+                <h3>ODShop – Store Builder</h3>
+                <p>Instant online store builder with themes, checkout, inventory & shop admin panel.</p>
+                <a href="https://odshops.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
+            </div>
         </div>
     </div>
 </section>
@@ -282,7 +306,21 @@ img:hover{ transform: scale(1.05) rotate(-1deg); }
 <!-- Experience -->
 <section id="experience" class="reveal">
     <h2 class="section-title">Experience</h2>
-    <p>Full Stack Developer at Intelliage Solutions (2023 – Present). Led multiple projects including Buildors CRM, CVMeetup, ODShop, Bulk Email System.</p>
+    <div class="experience-item">
+        <h3>Intelliage Solutions – Full Stack Web Developer (2023 – Present)</h3>
+        <ul>
+            <li>Worked as a lead/full-stack developer on multiple key projects including:</li>
+            <ul>
+                <li><strong>Mr. Furniture:</strong> Developed website features, secure admin panels, optimized UI components, and dynamic product management.</li>
+                <li><strong>ODShop:</strong> Built e-commerce system with product listing, cart & order flow, admin dashboard, and responsive frontend components.</li>
+                <li><strong>Bulk Email System:</strong> Created high-performance bulk email sender with scheduling, queue optimization, templates, logging, and fail-safe delivery.</li>
+                <li><strong>Buildors CRM:</strong> Developed complete CRM platform with task automation, lead & pipeline management, API modules, roles & permissions, responsive UI, and phone input component with flags/dial codes.</li>
+                <li><strong>CVMeetup:</strong> Architected candidate-based platform with resume parsing, candidate profiles, admin/user dashboards, job posting module, secure authentication, and optimized UI.</li>
+            </ul>
+            <li>Handled end-to-end development: backend (Laravel), frontend (Vue.js / Ant Design Vue), API integrations, and server deployment.</li>
+            <li>Focused on performance, scalability, code quality, and maintainable architecture for all projects.</li>
+        </ul>
+    </div>
 </section>
 
 <!-- Education -->
@@ -305,17 +343,8 @@ img:hover{ transform: scale(1.05) rotate(-1deg); }
 <script>
 // Particles
 tsParticles.load("tsparticles", {
-    particles:{
-        number:{value:80},
-        color:{value:"#4cdfff"},
-        shape:{type:"circle"},
-        opacity:{value:0.6},
-        size:{value:3, random:true},
-        move:{enable:true, speed:1.5, direction:"none", outMode:"bounce"}
-    },
-    interactivity:{
-        events:{onHover:{enable:true, mode:"repulse"}, onClick:{enable:true, mode:"push"}}
-    },
+    particles:{number:{value:80}, color:{value:"#4cdfff"}, shape:{type:"circle"}, opacity:{value:0.6}, size:{value:3, random:true}, move:{enable:true, speed:1.5, direction:"none", outMode:"bounce"}},
+    interactivity:{events:{onHover:{enable:true, mode:"repulse"}, onClick:{enable:true, mode:"push"}}},
     detectRetina:true
 });
 
@@ -339,6 +368,18 @@ function setTheme(mode){
 }
 toggleBtn.onclick=()=>setTheme(bodyEl.classList.contains("dark")?"light":"dark");
 setTheme(localStorage.getItem("theme")||"dark");
+
+// Project slider auto
+const sliderInner = document.getElementById('project-slider-inner');
+let currentIndex = 0;
+const totalProjects = sliderInner.children.length;
+const visible = 3;
+
+setInterval(() => {
+    currentIndex++;
+    if(currentIndex > totalProjects - visible) currentIndex = 0;
+    sliderInner.style.transform = `translateX(-${(100/visible)*currentIndex}%)`;
+}, 1000);
 </script>
 </body>
 </html>
