@@ -5,37 +5,172 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Imran Arif - Web Developer Portfolio</title>
 
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-    body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; background: #0d0d0d; color: #fff; }
-    html { scroll-behavior: smooth; }
-    nav { position: fixed; width: 100%; top: 0; left: 0; background: rgba(0, 0, 0, 0.8); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(8px); z-index: 1000; }
-    nav a { color: #fff; margin-left: 20px; text-decoration: none; font-size: 15px; transition: 0.3s; }
-    nav a:hover { color: #4cdfff; }
-    .hero { height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; padding: 0 20px; }
-    .hero h1 { font-size: 50px; margin: 0; font-weight: 700; }
-    .typewriter { color: #4cdfff; font-size: 22px; border-right: 2px solid #4cdfff; white-space: nowrap; overflow: hidden; width: 0; animation: typing 4s steps(40) forwards, blink 0.7s infinite; margin-top: 10px; }
-    @keyframes typing { from { width: 0; } to { width: 280px; } }
-    @keyframes blink { 50% { border-color: transparent; } }
-    section { padding: 80px 10%; }
-    .section-title { font-size: 30px; margin-bottom: 20px; color: #4cdfff; }
-    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-    .project-card { background: #1a1a1a; padding: 20px; border-radius: 10px; transition: transform .3s, box-shadow .3s; border: 1px solid #333; }
-    .project-card:hover { transform: translateY(-8px); box-shadow: 0 0 20px #4cdfff55; }
-    .project-card h3 { margin: 0 0 10px; color: #4cdfff; }
-    .project-card a { color: #4cdfff; text-decoration: none; font-size: 14px; }
-    .skills { display: flex; flex-wrap: wrap; gap: 15px; }
-    .skill { background: #1e1e1e; padding: 10px 18px; border-radius: 20px; border: 1px solid #333; font-size: 14px; transition: .3s; }
-    .skill:hover { background: #4cdfff; color: #000; }
-    .contact-box { background: #1a1a1a; padding: 20px; border-radius: 10px; border: 1px solid #444; }
-    .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
-    .reveal.active { opacity: 1; transform: translateY(0); }
+    :root {
+        --primary: #4cdfff;
+        --dark-bg: #0d0d0d;
+        --dark-card: #1a1a1a;
+        --dark-text: #ffffff;
+
+        --light-bg: #ffffff;
+        --light-card: #f3f3f3;
+        --light-text: #121212;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark {
+        background: var(--dark-bg);
+        color: var(--dark-text);
+    }
+
+    body.light {
+        background: var(--light-bg);
+        color: var(--light-text);
+    }
+
+    /* Navbar */
+    nav {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        backdrop-filter: blur(8px);
+        z-index: 1000;
+        border-bottom: 1px solid #44444444;
+    }
+
+    nav a {
+        margin-left: 20px;
+        color: var(--primary);
+        text-decoration: none;
+        font-size: 15px;
+        transition: 0.3s;
+    }
+
+    nav a:hover {
+        opacity: 0.7;
+    }
+
+    #theme-toggle {
+        cursor: pointer;
+        padding: 8px 14px;
+        background: var(--primary);
+        border-radius: 7px;
+        color: black;
+        font-size: 14px;
+        border: none;
+    }
+
+    .hero {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+        margin: 0;
+        font-weight: 700;
+    }
+
+    .typewriter {
+        color: var(--primary);
+        font-size: 22px;
+        margin-top: 10px;
+    }
+
+    section {
+        padding: 80px 10%;
+    }
+
+    .section-title {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: var(--primary);
+    }
+
+    /* Cards */
+    .project-card,
+    .contact-box {
+        padding: 20px;
+        border-radius: 12px;
+        transition: 0.3s;
+        border: 1px solid #44444455;
+    }
+
+    body.dark .project-card,
+    body.dark .contact-box {
+        background: var(--dark-card);
+    }
+
+    body.light .project-card,
+    body.light .contact-box {
+        background: var(--light-card);
+    }
+
+    .project-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 0 22px #4cdfff55;
+    }
+
+    .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .skill {
+        padding: 10px 18px;
+        background: #222;
+        border-radius: 18px;
+        font-size: 14px;
+        border: 1px solid #333;
+        transition: 0.3s;
+    }
+
+    body.light .skill {
+        background: #e2e2e2;
+        border-color: #cccccc;
+    }
+
+    .skill:hover {
+        background: var(--primary);
+        color: #000;
+    }
+
+    .reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
 </head>
-<body>
+<body class="dark">
 
 <nav>
-    <div><strong>IMRAN ARIF</strong></div>
+    <strong style="color:var(--primary);font-size:18px;">IMRAN ARIF</strong>
+
     <div>
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
@@ -44,6 +179,8 @@
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
     </div>
+
+    <button id="theme-toggle">Light Mode</button>
 </nav>
 
 <section class="hero">
@@ -54,24 +191,25 @@
 <section id="about" class="reveal">
     <h2 class="section-title">About Me</h2>
 
-    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:30px;">
-        <img src="https://i.ibb.co/YyJ7G1d/profile-demo.png" alt="Imran Arif" style="width:180px;height:180px;border-radius:50%;object-fit:cover;border:3px solid #4cdfff;" />
+    <div style="display:flex;flex-wrap:wrap;gap:30px;align-items:center;">
+        <img src="https://i.ibb.co/YyJ7G1d/profile-demo.png" style="width:180px;height:180px;border-radius:50%;object-fit:cover;border:3px solid var(--primary);" />
 
-        <div style="flex:1;min-width:250px;">
+        <div style="flex:1;">
             <p>
-                I am a passionate and dedicated <strong>Full Stack Web Developer</strong> with strong expertise in
-                <strong>Laravel, Vue.js, APIs, automation systems, CRM development, and AI integrations</strong>.
-                I love building real-world platforms that solve complex problems — from CRM systems and SaaS dashboards
-                to automation tools, AI assistants, marketing systems, and high-performance backend APIs.
+                I am a passionate and highly motivated <strong>Full Stack Web Developer</strong> with hands-on experience building
+                modern web applications, CRM systems, SaaS dashboards, automation tools and AI-powered platforms.
             </p>
             <p>
-                My work focuses on writing clean, scalable, and secure code. I enjoy working with modern frameworks,
-                building reusable components, optimizing performance, and integrating third-party services such as
-                <strong>Twilio, Gmail API, OpenAI, Stripe, Google Maps, Integrations, Web Scraping</strong>, and more.
+                My expertise includes <strong>Laravel, Vue.js, REST APIs, real-time features, scraping, cloud deployment,
+                payment integrations, email/SMS systems, microservices, and AI APIs</strong>.
             </p>
             <p>
-                I believe in continuous learning, solving challenges, and delivering results that help businesses grow.
-                Every project I build aims for smooth UI/UX, fast performance, and long-term stability.
+                I specialize in creating performance-optimized, scalable, and secure web systems designed for business growth.
+                I enjoy solving deep technical problems, enhancing product workflows, building automation, and delivering
+                solutions that save time and generate real results.
+            </p>
+            <p>
+                I am always focused on clean code, modern UI/UX, teamwork, and long-term maintainability.
             </p>
         </div>
     </div>
@@ -79,89 +217,75 @@
 
 <section id="skills" class="reveal">
     <h2 class="section-title">Skills</h2>
+
     <div class="skills">
-        <div class="skill">HTML</div><div class="skill">CSS</div><div class="skill">Bootstrap</div><div class="skill">Tailwind CSS</div><div class="skill">JavaScript</div><div class="skill">Vue.js</div><div class="skill">Vue Router</div><div class="skill">Pinia</div>
-        <div class="skill">PHP</div><div class="skill">Laravel</div><div class="skill">Livewire</div><div class="skill">REST APIs</div><div class="skill">MySQL</div>
-        <div class="skill">Stripe</div><div class="skill">PayPal</div><div class="skill">Twilio</div><div class="skill">Mailgun</div>
-        <div class="skill">Firebase</div><div class="skill">Google Maps</div><div class="skill">Gmail API</div>
-        <div class="skill">OpenAI API</div><div class="skill">ElevenLabs API</div><div class="skill">Web Scraping</div>
-        <div class="skill">Linux Server</div><div class="skill">cPanel / VPS</div>
+        <div class="skill">HTML</div><div class="skill">CSS</div><div class="skill">Bootstrap</div>
+        <div class="skill">Tailwind</div><div class="skill">JavaScript</div><div class="skill">Vue.js</div>
+        <div class="skill">Pinia</div><div class="skill">Vue Router</div>
+        <div class="skill">PHP</div><div class="skill">Laravel</div><div class="skill">Livewire</div>
+        <div class="skill">MySQL</div><div class="skill">REST APIs</div>
+        <div class="skill">Stripe</div><div class="skill">PayPal</div><div class="skill">Twilio</div>
+        <div class="skill">Mailgun</div><div class="skill">Firebase</div><div class="skill">Google Maps</div>
+        <div class="skill">Gmail API</div><div class="skill">OpenAI API</div><div class="skill">ElevenLabs API</div>
+        <div class="skill">Scraping</div><div class="skill">Linux Server</div><div class="skill">cPanel/VPS</div>
     </div>
 </section>
 
 <section id="projects" class="reveal">
     <h2 class="section-title">Projects</h2>
-    <div class="projects">
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;">
+
         <div class="project-card">
-            <h3>Buildors CRM</h3>
-            <p>A complete CRM system with automation, tasks, pipelines, AI voice/chat, email/SMS marketing, and client management.</p>
-            <a href="https://buildors.com" target="_blank">Visit Project →</a>
+            <h3 style="color:var(--primary);">Buildors CRM</h3>
+            <p>A complete automation CRM with tasks, pipelines, AI chat/voice, email/SMS marketing, invoices & integrations.</p>
+            <a href="https://buildors.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
         </div>
 
         <div class="project-card">
-            <h3>CVMeetup</h3>
-            <p>Job-matching platform with video profiles, smart CV scanning, and candidate/employer dashboards.</p>
-            <a href="https://cvmeetup.com" target="_blank">Visit Project →</a>
+            <h3 style="color:var(--primary);">CVMeetup</h3>
+            <p>Smart job-matching platform with video profiles, employer dashboard, AI CV scanning & messaging.</p>
+            <a href="https://cvmeetup.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
         </div>
 
         <div class="project-card">
-            <h3>Mr. Furniture USA</h3>
-            <p>E-commerce platform with filters, cart, order tracking, and Stripe integration.</p>
-            <a href="https://mrfurnitureusa.com" target="_blank">Visit Project →</a>
+            <h3 style="color:var(--primary);">Mr. Furniture USA</h3>
+            <p>E-commerce website with filtering, cart, order tracking & full Stripe integration.</p>
+            <a href="https://mrfurnitureusa.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
         </div>
 
         <div class="project-card">
-            <h3>Bulk Email Campaign System</h3>
-            <p>High-performance email rotation system with warmup, analytics, logs, and multi-provider integration.</p>
-            <a href="https://emails.oddial.com" target="_blank">Visit Project →</a>
+            <h3 style="color:var(--primary);">Bulk Email System</h3>
+            <p>High-volume email rotation system with warmup, analytics, logs & multi-provider support.</p>
+            <a href="https://emails.oddial.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
         </div>
 
         <div class="project-card">
-            <h3>Odshop – Online Store Builder</h3>
-            <p>Instant online store builder with themes, inventory, checkout, and admin panel.</p>
-            <a href="https://odshops.com" target="_blank">Visit Project →</a>
+            <h3 style="color:var(--primary);">Odshop – Store Builder</h3>
+            <p>Instant online store builder with themes, checkout, inventory & shop admin panel.</p>
+            <a href="https://odshops.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
         </div>
-    </div>
-        <div class="project-card">
-            <h3>CVMeetup</h3>
-            <p>Video profile & CV-based job matching platform built with Laravel + Vue.</p>
-            <a href="https://cvmeetup.com" target="_blank">Visit Project →</a>
-        </div>
-        <div class="project-card">
-            <h3>Mr. Furniture USA</h3>
-            <p>E-commerce platform with cart, filters, payments, and admin panel.</p>
-            <a href="https://mrfurnitureusa.com" target="_blank">Visit Project →</a>
-        </div>
-        <div class="project-card">
-            <h3>Bulk Email Campaign System</h3>
-            <p>Advanced email rotation, domain warmup, logs, and analytics using Laravel.</p>
-            <a href="https://emails.oddial.com" target="_blank">Visit Project →</a>
-        </div>
-        <div class="project-card">
-            <h3>Odshop – Online Store Builder</h3>
-            <p>Create fully functional online stores with themes and inventory.</p>
-            <a href="https://odshops.com" target="_blank">Visit Project →</a>
-        </div>
+
     </div>
 </section>
 
 <section id="experience" class="reveal">
     <h2 class="section-title">Experience</h2>
 
-    <p><strong>Lead Full Stack Developer – Buildors CRM</strong> (2024 - Present)</p>
-    <ul>
-        <li>Designed and developed a complete CRM system including pipelines, tasks, automation, AI assistants, email/SMS marketing, and client management.</li>
-        <li>Integrated Twilio, Gmail API, OpenAI, ElevenLabs, Stripe, Google Maps, and advanced scraping modules.</li>
-        <li>Built workflow automation engine, dynamic forms, calendar system, and real‑time notification system.</li>
-        <li>Implemented role-based permissions, multi-user accounts, and organization-level controls.</li>
-    </ul>
-
     <p><strong>Full Stack Web Developer – Intelliage Solutions</strong> (2023 - 2024)</p>
     <ul>
-        <li>Created SaaS systems, automation dashboards, and marketing tools.</li>
-        <li>Developed e-commerce, job scraping tools, bulk email systems, and frontend dashboards using Vue.js.</li>
-        <li>Worked on server deployment, optimization, and API integrations.</li>
-        <li>Improved performance, optimized databases, and built reusable components.</li>
+        <li>Developed CRM systems, SaaS dashboards & automation tools.</li>
+        <li>Built job scraping tools, bulk email systems & Vue.js dashboards.</li>
+        <li>Worked with servers, deployment, API optimization & integrations.</li>
+        <li>Improved UI/UX, performance, and reusable components.</li>
+    </ul>
+
+    <p><strong>Freelance Developer – Various Clients</strong> (2024 - Present)</p>
+    <ul>
+        <li>Developed custom CRMs, marketing systems & automation platforms.</li>
+        <li>Integrations with AI (OpenAI/ElevenLabs), Twilio, Stripe & third-party APIs.</li>
+        <li>Created e-commerce, appointment booking, dashboards & admin panels.</li>
+        <li>Provided full system deployment on VPS, cPanel & cloud servers.</li>
     </ul>
 </section>
 
@@ -176,21 +300,36 @@
     <div class="contact-box">
         <p>Email: imran22arif@gmail.com</p>
         <p>Phone: 0307-0047166</p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/imran-arif-3b63952b9/" target="_blank" style="color:#4cdfff;">Visit Profile</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/imran-arif-3b63952b9/" target="_blank" style="color:var(--primary);">Visit Profile</a></p>
     </div>
 </section>
 
 <script>
+/* Reveal animation */
 const reveals = document.querySelectorAll(".reveal");
 window.addEventListener("scroll", () => {
-    for (let i = 0; i < reveals.length; i++) {
-        let windowHeight = window.innerHeight;
-        let elementTop = reveals[i].getBoundingClientRect().top;
-        if (elementTop < windowHeight - 100) {
-            reveals[i].classList.add("active");
+    reveals.forEach((el) => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+            el.classList.add("active");
         }
-    }
+    });
 });
+
+/* Theme switching */
+const toggleBtn = document.getElementById("theme-toggle");
+const body = document.body;
+
+function setTheme(mode) {
+    body.className = mode;
+    toggleBtn.textContent = mode === "dark" ? "Light Mode" : "Dark Mode";
+    localStorage.setItem("theme", mode);
+}
+
+toggleBtn.onclick = () => {
+    setTheme(body.classList.contains("dark") ? "light" : "dark");
+};
+
+setTheme(localStorage.getItem("theme") || "dark");
 </script>
 
 </body>
