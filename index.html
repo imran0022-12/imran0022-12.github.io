@@ -1,387 +1,731 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Imran Arif - Full Stack Web Developer Portfolio</title>
-<link rel="icon" href="https://cdn-icons-png.flaticon.com/128/3344/3344358.png" type="image/png">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Imran Arif – Full Stack Web Developer</title>
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <!-- Your Requested Favicon -->
+        <link
+            rel="icon"
+            href="https://cdn-icons-png.flaticon.com/128/3344/3344358.png"
+            type="image/png"
+        />
 
-<!-- Animate.css -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <!-- Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap"
+            rel="stylesheet"
+        />
 
-<!-- Particles.js -->
+        <!-- Libraries -->
+        <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
 
-    
-<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+        <style>
+            :root {
+                /* Dark Theme */
+                --bg: #0a0a1a;
+                --card: rgba(20, 20, 50, 0.5);
+                --glass: rgba(255, 255, 255, 0.06);
+                --border: rgba(0, 212, 255, 0.25);
+                --text: #e0e7ff;
+                --text-muted: #aaaaaa;
+                --accent: #00d4ff;
+                --gradient: linear-gradient(135deg, #00d4ff, #8b5cf6, #ff2e96);
+            }
 
-<style>
-:root{
-    --primary: #4cdfff;
-    --primary-gradient: linear-gradient(90deg,#4cdfff,#0f9fff);
-    --dark-bg: #0a0a0a;
-    --dark-card: #111;
-    --dark-text: #fff;
-    --light-bg: #fff;
-    --light-card: #f3f3f3;
-    --light-text: #121212;
-    --transition: 0.5s ease-in-out;
-}
+            /* Light Theme – NOW PERFECT */
+            .light {
+                --bg: #f8faff;
+                --card: rgba(255, 255, 255, 0.95);
+                --glass: rgba(255, 255, 255, 0.8);
+                --border: rgba(0, 100, 255, 0.2);
+                --text: #1a1a2e;
+                --text-muted: #555555;
+                --accent: #0068ff;
+                --gradient: linear-gradient(135deg, #0068ff, #7c3aed, #ec4899);
+            }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-family: "Inter", sans-serif;
+                background: var(--bg);
+                color: var(--text);
+                overflow-x: hidden;
+                transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            }
 
-body{
-    font-family:'Poppins',sans-serif;
-    background: var(--dark-bg);
-    color: var(--dark-text);
-    transition: background var(--transition), color var(--transition);
-    scroll-behavior: smooth;
-}
+            /* Cursor – Works perfectly in both themes */
+            .cursor {
+                position: fixed;
+                width: 50px;
+                height: 50px;
+                border: 2px solid var(--accent);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                transform: translate(-50%, -50%);
+                mix-blend-mode: difference;
+                transition: all 0.15s ease;
+            }
+            .cursor::after {
+                content: "";
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background: var(--accent);
+                border-radius: 50%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
 
-body.light{
-    background: var(--light-bg);
-    color: var(--light-text);
-}
+            /* Navbar */
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                padding: 25px 8%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                z-index: 1000;
+                backdrop-filter: blur(20px);
+                background: rgba(10, 10, 26, 0.7);
+                border-bottom: 1px solid var(--border);
+                transition: all 0.5s;
+            }
+            .light nav {
+                background: rgba(255, 255, 255, 0.8);
+            }
 
-/* Navbar */
-nav{
-    position: fixed;
-    width:100%;
-    top:0;
-    padding:15px 30px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    backdrop-filter:blur(10px);
-    z-index:1000;
-    border-bottom:1px solid #44444444;
-}
-nav a{
-    margin-left:20px;
-    text-decoration:none;
-    font-weight:500;
-    font-size:15px;
-    position:relative;
-    transition:0.3s;
-}
-body.dark nav a{ color: var(--primary);}
-body.light nav a{ color: #0f9fff;}
-nav a::after{
-    content:'';
-    display:block;
-    height:2px;
-    width:0;
-    background: var(--primary);
-    position:absolute;
-    bottom:-5px;
-    left:0;
-    transition:0.3s;
-}
-nav a:hover::after{ width:100%; }
+            .logo {
+                font-size: 32px;
+                font-weight: 900;
+                background: var(--gradient);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
 
-#theme-toggle{
-    cursor:pointer;
-    padding:8px 14px;
-    border-radius:7px;
-    font-size:14px;
-    border:none;
-    transition:0.3s;
-}
-body.dark #theme-toggle{ background: var(--primary); color:black; }
-body.light #theme-toggle{ background: #0f9fff; color:white; }
-#theme-toggle:hover{ transform:scale(1.1); }
+            .nav-links a {
+                margin: 0 22px;
+                text-decoration: none;
+                font-weight: 600;
+                color: var(--text);
+                position: relative;
+            }
+            .nav-links a::after {
+                content: "";
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                width: 0;
+                height: 3px;
+                background: var(--gradient);
+                transition: width 0.5s ease;
+            }
+            .nav-links a:hover::after {
+                width: 100%;
+            }
 
-/* Hero */
-.hero{
-    position:relative;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    text-align:center;
-    overflow:hidden;
-}
-#tsparticles{
-    position:absolute;
-    width:100%;
-    height:100%;
-    z-index:0;
-}
-.hero-content{
-    position:relative;
-    z-index:1;
-}
-.hero h1{
-    font-size:60px;
-    font-weight:700;
-    background: var(--primary-gradient);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    animation: floatText 3s ease-in-out infinite alternate;
-}
-@keyframes floatText{
-    0%{ transform:translateY(0px);}
-    100%{ transform:translateY(-15px);}
-}
-.typewriter{
-    color:var(--primary);
-    font-size:24px;
-    margin-top:15px;
-    overflow:hidden;
-    border-right:.15em solid var(--primary);
-    white-space:nowrap;
-    animation: typing 3s steps(30,end), blink-caret .75s step-end infinite;
-}
-@keyframes typing{from{width:0}to{width:100%}}
-@keyframes blink-caret{50%{border-color:transparent}}
+            #theme-toggle {
+                padding: 14px 28px;
+                border: none;
+                border-radius: 50px;
+                background: var(--gradient);
+                color: white;
+                font-weight: 700;
+                cursor: pointer;
+                box-shadow: 0 0 40px rgba(0, 212, 255, 0.4);
+                transition: all 0.4s;
+            }
+            #theme-toggle:hover {
+                transform: translateY(-4px) scale(1.05);
+            }
 
-/* Sections */
-section{
-    padding:100px 10%;
-}
-.section-title{
-    font-size:38px;
-    margin-bottom:40px;
-    background: var(--primary-gradient);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
+            /* Hero */
+            .hero {
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                overflow: hidden;
+            }
+            #tsparticles {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+            .hero-content {
+                text-align: center;
+                z-index: 2;
+            }
+            .hero h1 {
+                font-size: 100px;
+                font-weight: 900;
+                background: var(--gradient);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                opacity: 0;
+                transform: translateY(100px);
+            }
+            .hero p {
+                font-size: 32px;
+                margin: 20px 0;
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            .cta-btn {
+                padding: 18px 50px;
+                font-size: 20px;
+                font-weight: 700;
+                border: none;
+                border-radius: 60px;
+                background: var(--gradient);
+                color: white;
+                cursor: pointer;
+                margin-top: 30px;
+                box-shadow: 0 0 60px rgba(0, 212, 255, 0.6);
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            .cta-btn:hover {
+                transform: translateY(-8px) scale(1.08);
+            }
 
-/* Project slider */
-.project-slider{
-    display:flex;
-    overflow:hidden;
-    gap:25px;
-}
-.project-slider-inner{
-    display:flex;
-    transition: transform 0.5s ease-in-out;
-}
-.project-card{
-    flex:0 0 calc(33.33% - 16px);
-    padding:25px;
-    border-radius:12px;
-    transition:0.3s;
-    border:1px solid #44444455;
-    cursor:pointer;
-    background: var(--dark-card);
-}
-body.light .project-card{ background: var(--light-card);}
-.project-card:hover{
-    transform:translateY(-12px) scale(1.03);
-    box-shadow:0 0 40px #4cdfff99;
-}
-.project-card h3{ transition: transform 0.3s; }
-.project-card:hover h3{ transform:scale(1.05); }
+            section {
+                padding: 160px 8%;
+            }
+            .section-title {
+                font-size: 70px;
+                font-weight: 900;
+                text-align: center;
+                margin-bottom: 100px;
+                background: var(--gradient);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                opacity: 0;
+                transform: translateY(60px);
+            }
 
-/* Skills */
-.skills{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-}
-.skill{
-    padding:12px 20px;
-    border-radius:50px;
-    font-size:14px;
-    background:#222;
-    border:1px solid #333;
-    transition:0.3s;
-    animation: floatSkill 4s ease-in-out infinite alternate;
-}
-body.light .skill{ background:#e2e2e2; border-color:#ccc;}
-@keyframes floatSkill{
-    0%{ transform:translateY(0px);}
-    100%{ transform:translateY(-5px);}
-}
-.skill:hover{ background:var(--primary); color:black; transform:scale(1.1); }
+            .about-grid {
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                gap: 100px;
+                align-items: center;
+            }
+            .about-img {
+                width: 380px;
+                height: 380px;
+                border-radius: 40px;
+                object-fit: cover;
+                border: 5px solid var(--accent);
+                box-shadow: 0 0 80px rgba(0, 212, 255, 0.5);
+                transition: 0.8s;
+            }
+            .about-img:hover {
+                transform: scale(1.07) rotate(3deg);
+            }
 
-/* Reveal */
-.reveal{
-    opacity:0;
-    transform:translateY(50px);
-    transition:all 0.8s ease;
-}
-.reveal.active{ opacity:1; transform:translateY(0); }
+            .skills-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                gap: 24px;
+            }
+            .skill {
+                padding: 28px 20px;
+                text-align: center;
+                font-weight: 600;
+                background: var(--glass);
+                border-radius: 28px;
+                border: 1px solid var(--border);
+                backdrop-filter: blur(12px);
+                transition: all 0.6s;
+            }
+            .skill:hover {
+                transform: translateY(-20px) scale(1.1);
+                background: var(--gradient);
+                color: white;
+                box-shadow: 0 30px 60px rgba(0, 212, 255, 0.4);
+            }
 
-/* Image hover */
-img{ transition: transform 0.5s;}
-img:hover{ transform: scale(1.05) rotate(-1deg);}
-</style>
-</head>
-<body class="dark">
+            .experience-item,
+            .contact-item {
+                background: var(--glass);
+                padding: 50px;
+                border-radius: 32px;
+                border: 1px solid var(--border);
+                backdrop-filter: blur(15px);
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            .experience-item h3,
+            .contact-item h3 {
+                font-size: 28px;
+                margin-bottom: 20px;
+                background: var(--gradient);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
 
-<!-- Navbar -->
-<nav>
-    <strong style="color:var(--primary);font-size:18px;">IMRAN ARIF</strong>
-    <div>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-    </div>
-    <button id="theme-toggle">Light Mode</button>
-</nav>
+            .projects-container {
+                overflow: hidden;
+                border-radius: 40px;
+                background: var(--card);
+                backdrop-filter: blur(20px);
+                border: 1px solid var(--border);
+                padding: 50px;
+            }
+            .project-track {
+                display: flex;
+                gap: 40px;
+                transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+            }
+            .project-card {
+                min-width: 420px;
+                border-radius: 32px;
+                overflow: hidden;
+                background: rgba(30, 30, 70, 0.7);
+                border: 1px solid var(--border);
+            }
+            .light .project-card {
+                background: rgba(240, 240, 255, 0.9);
+            }
+            .project-card:hover {
+                transform: translateY(-25px) rotateX(8deg);
+                box-shadow: 0 40px 100px rgba(0, 100, 255, 0.3);
+            }
+            .project-info {
+                padding: 40px;
+                background: rgba(10, 10, 30, 0.8);
+            }
+            .light .project-info {
+                background: rgba(255, 255, 255, 0.95);
+            }
 
-<!-- Hero -->
-<section class="hero">
-    <div id="tsparticles"></div>
-    <div class="hero-content">
-        <h1>Hello, I'm Imran Arif</h1>
-        <div class="typewriter">Full Stack Web Developer</div>
-    </div>
-</section>
+            /* Footer */
+            footer {
+                padding: 140px 8% 100px;
+                background: linear-gradient(
+                    135deg,
+                    rgba(10, 10, 30, 0.98),
+                    rgba(20, 0, 50, 0.98)
+                );
+                border-top: 1px solid var(--border);
+                text-align: center;
+            }
+            .light footer {
+                background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+            }
+            footer::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 6px;
+                background: var(--gradient);
+                box-shadow: 0 0 80px rgba(0, 100, 255, 0.8);
+            }
+            .footer-content {
+                max-width: 1100px;
+                margin: 0 auto;
+                opacity: 0;
+                transform: translateY(80px);
+                position: relative;
+            }
+            .footer-message {
+                font-size: 48px;
+                font-weight: 800;
+                line-height: 1.3;
+                background: var(--gradient);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 24px;
+            }
+            .footer-sub {
+                font-size: 22px;
+                color: var(--text-muted);
+                margin-bottom: 50px;
+            }
+            .hire-btn {
+                padding: 22px 70px;
+                font-size: 26px;
+                font-weight: 700;
+                border: none;
+                border-radius: 80px;
+                background: var(--gradient);
+                color: white;
+                cursor: pointer;
+                display: inline-block;
+                text-decoration: none;
+                box-shadow: 0 0 100px rgba(0, 100, 255, 0.6);
+                transition: all 0.5s;
+            }
+            .hire-btn:hover {
+                transform: translateY(-12px) scale(1.12);
+                box-shadow: 0 0 140px rgba(0, 100, 255, 1);
+            }
+            .copyright {
+                margin-top: 100px;
+                font-size: 16px;
+                opacity: 0.7;
+            }
+        </style>
+    </head>
+    <body class="dark">
+        <div class="cursor"></div>
 
-<!-- About -->
-<section id="about" class="reveal">
-    <h2 class="section-title">About Me</h2>
-    <div style="display:flex;flex-wrap:wrap;gap:30px;align-items:center;">
-        <img src="https://scontent.flhe41-1.fna.fbcdn.net/v/t39.30808-6/472375241_2018574985236821_7956161804888883337_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=TTe_f7zckYYQ7kNvwEKToIX&_nc_oc=AdlWH4aZQrH55UuSWMeMtV22HLg97q7ZEqn_bUh9Ws6okbDlXmh3xGWMimGK0Gcg47s&_nc_zt=23&_nc_ht=scontent.flhe41-1.fna&_nc_gid=gzHc2OJjPvLeQ0tBoWuxHQ&oh=00_AfhLXUhXYfeIJH-0hzv_Q2bhy4d1Pne1NgE8LJ-wetoQeQ&oe=692EE038" style="width:180px;height:180px;border-radius:50%;object-fit:cover;border:3px solid var(--primary);" />
-        <div style="flex:1;">
-            <p>I am a passionate and highly motivated <strong>Full Stack Web Developer</strong> with hands-on experience building modern web applications, CRM systems, SaaS dashboards, automation tools and AI-powered platforms.</p>
-            <p>My expertise includes <strong>Laravel, Vue.js, REST APIs, real-time features, scraping, cloud deployment, payment integrations, email/SMS systems, microservices, and AI APIs</strong>.</p>
-            <p>I specialize in creating performance-optimized, scalable, and secure web systems designed for business growth. I enjoy solving deep technical problems, enhancing product workflows, building automation, and delivering solutions that save time and generate real results.</p>
-            <p>I am always focused on clean code, modern UI/UX, teamwork, and long-term maintainability.</p>
-        </div>
-    </div>
-</section>
-
-<!-- Skills -->
-<section id="skills" class="reveal">
-    <h2 class="section-title">Skills</h2>
-    <div class="skills">
-        <div class="skill">HTML</div><div class="skill">CSS</div><div class="skill">Bootstrap</div>
-        <div class="skill">Tailwind</div><div class="skill">JavaScript</div><div class="skill">Vue.js</div>
-        <div class="skill">Pinia</div><div class="skill">Vue Router</div>
-        <div class="skill">PHP</div><div class="skill">Laravel</div><div class="skill">Livewire</div>
-        <div class="skill">MySQL</div><div class="skill">REST APIs</div>
-        <div class="skill">Stripe</div><div class="skill">PayPal</div><div class="skill">Twilio</div>
-        <div class="skill">Mailgun</div><div class="skill">Firebase</div><div class="skill">Google Maps</div>
-        <div class="skill">Gmail API</div><div class="skill">OpenAI API</div><div class="skill">ElevenLabs API</div>
-        <div class="skill">Scraping</div><div class="skill">Linux Server</div><div class="skill">cPanel/VPS</div>
-    </div>
-</section>
-
-<!-- Projects Slider -->
-<section id="projects" class="reveal">
-    <h2 class="section-title">Projects</h2>
-    <div class="project-slider">
-        <div class="project-slider-inner" id="project-slider-inner">
-            <div class="project-card">
-                <h3>Buildors CRM</h3>
-                <p>Automation CRM with tasks, pipelines, AI chat/voice, email/SMS marketing, invoices & integrations.</p>
-                <a href="https://buildors.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
+        <!-- Navbar -->
+        <nav>
+            <div class="logo">IMRAN ARIF</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
             </div>
-            <div class="project-card">
-                <h3>CVMeetup</h3>
-                <p>Job matching platform with video profiles, employer dashboard, AI CV scanning & messaging.</p>
-                <a href="https://cvmeetup.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
+            <button id="theme-toggle">Light Mode</button>
+        </nav>
+
+        <!-- Hero -->
+        <section class="hero">
+            <div id="tsparticles"></div>
+            <div class="hero-content">
+                <h1>Hello, I'm Imran Arif</h1>
+                <p>Full Stack Web Developer</p>
+                <button class="cta-btn">Explore My Work</button>
             </div>
-            <div class="project-card">
-                <h3>Mr. Furniture</h3>
-                <p>E-commerce with cart, order tracking & Stripe integration.</p>
-                <a href="https://mrfurnitureusa.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
+        </section>
+
+        <!-- About -->
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <img
+                    src="https://scontent.flhe41-1.fna.fbcdn.net/v/t39.30808-6/472375241_2018574985236821_7956161804888883337_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=TTe_f7zckYYQ7kNvwEKToIX&_nc_oc=AdlWH4aZQrH55UuSWMeMtV22HLg97q7ZEqn_bUh9Ws6okbDlXmh3xGWMimGK0Gcg47s&_nc_zt=23&_nc_ht=scontent.flhe41-1.fna&_nc_gid=gzHc2OJjPvLeQ0tBoWuxHQ&oh=00_AfhLXUhXYfeIJH-0hzv_Q2bhy4d1Pne1NgE8LJ-wetoQeQ&oe=692EE038"
+                    class="about-img"
+                    alt="Imran Arif"
+                />
+                <div>
+                    <p
+                        style="
+                            font-size: 20px;
+                            line-height: 2;
+                            margin-bottom: 24px;
+                        "
+                    >
+                        I am a passionate and highly motivated
+                        <strong>Full Stack Web Developer</strong> with hands-on
+                        experience building modern web applications, CRM
+                        systems, SaaS dashboards, automation tools and
+                        AI-powered platforms.
+                    </p>
+                    <p style="font-size: 18px; line-height: 1.9; opacity: 0.9">
+                        My expertise includes
+                        <strong
+                            >Laravel, Vue.js, REST APIs, real-time features,
+                            scraping, cloud deployment, payment integrations,
+                            email/SMS systems, microservices, and AI
+                            APIs</strong
+                        >.
+                    </p>
+                    <p style="font-size: 18px; line-height: 1.9; opacity: 0.9">
+                        I specialize in creating performance-optimized,
+                        scalable, and secure web systems designed for business
+                        growth. I enjoy solving deep technical problems,
+                        enhancing product workflows, and delivering solutions
+                        that save time and generate real results.
+                    </p>
+                    <p style="font-size: 18px; line-height: 1.9; opacity: 0.9">
+                        I am always focused on clean code, modern UI/UX,
+                        teamwork, and long-term maintainability.
+                    </p>
+                </div>
             </div>
-            <div class="project-card">
-                <h3>Bulk Email System</h3>
-                <p>High-volume email rotation system with warmup, analytics, logs & multi-provider support.</p>
-                <a href="https://emails.oddial.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill">HTML</div>
+                <div class="skill">CSS</div>
+                <div class="skill">Bootstrap</div>
+                <div class="skill">Tailwind</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">Vue.js</div>
+                <div class="skill">Pinia</div>
+                <div class="skill">Vue Router</div>
+                <div class="skill">PHP</div>
+                <div class="skill">Laravel</div>
+                <div class="skill">Livewire</div>
+                <div class="skill">MySQL</div>
+                <div class="skill">REST APIs</div>
+                <div class="skill">Stripe</div>
+                <div class="skill">PayPal</div>
+                <div class="skill">Twilio</div>
+                <div class="skill">Mailgun</div>
+                <div class="skill">Firebase</div>
+                <div class="skill">Google Maps</div>
+                <div class="skill">Gmail API</div>
+                <div class="skill">OpenAI API</div>
+                <div class="skill">ElevenLabs API</div>
+                <div class="skill">Scraping</div>
+                <div class="skill">Linux Server</div>
+                <div class="skill">cPanel/VPS</div>
             </div>
-            <div class="project-card">
-                <h3>ODShop – Store Builder</h3>
-                <p>Instant online store builder with themes, checkout, inventory & shop admin panel.</p>
-                <a href="https://odshops.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
+        </section>
+        <section id="projects">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-container">
+                <div class="project-track" id="projectTrack"></div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
+        <!-- Experience -->
+        <section id="experience">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-item">
+                <h3>
+                    Intelliage Solutions – Full Stack Web Developer (2023 –
+                    Present)
+                </h3>
+                <ul
+                    style="
+                        font-size: 18px;
+                        line-height: 2;
+                        opacity: 0.9;
+                        margin-left: 30px;
+                        margin-top: 20px;
+                    "
+                >
+                    <li>
+                        Lead developer on Buildors CRM, CVMeetup, Mr. Furniture,
+                        ODShop, Bulk Email System
+                    </li>
+                    <li>
+                        Full-stack development with Laravel, Vue.js, Livewire,
+                        REST APIs, Stripe, Twilio, OpenAI
+                    </li>
+                    <li>
+                        Secure admin panels, real-time features, payment
+                        gateways, scalable architecture
+                    </li>
+                    <li>
+                        Server deployment, performance optimization, and clean
+                        code standards
+                    </li>
+                </ul>
+            </div>
+        </section>
 
-<!-- Experience -->
-<section id="experience" class="reveal">
-    <h2 class="section-title">Experience</h2>
-    <div class="experience-item">
-        <h3>Intelliage Solutions – Full Stack Web Developer (2023 – Present)</h3>
-        <ul>
-            <li>Worked as a lead/full-stack developer on multiple key projects including:</li>
-            <ul>
-                <li><strong>Mr. Furniture:</strong> Developed website features, secure admin panels, optimized UI components, and dynamic product management.</li>
-                <li><strong>ODShop:</strong> Built e-commerce system with product listing, cart & order flow, admin dashboard, and responsive frontend components.</li>
-                <li><strong>Bulk Email System:</strong> Created high-performance bulk email sender with scheduling, queue optimization, templates, logging, and fail-safe delivery.</li>
-                <li><strong>Buildors CRM:</strong> Developed complete CRM platform with task automation, lead & pipeline management, API modules, roles & permissions, responsive UI, and phone input component with flags/dial codes.</li>
-                <li><strong>CVMeetup:</strong> Architected candidate-based platform with resume parsing, candidate profiles, admin/user dashboards, job posting module, secure authentication, and optimized UI.</li>
-            </ul>
-            <li>Handled end-to-end development: backend (Laravel), frontend (Vue.js / Ant Design Vue), API integrations, and server deployment.</li>
-            <li>Focused on performance, scalability, code quality, and maintainable architecture for all projects.</li>
-        </ul>
-    </div>
-</section>
+        <!-- Education -->
+        <section id="education">
+            <h2 class="section-title">Education</h2>
+            <div class="experience-item">
+                <p style="font-size: 22px">
+                    <strong>Bachelor in Computer Science</strong> – Virtual
+                    University
+                </p>
+                <p style="font-size: 19px; margin-top: 20px">
+                    <strong>Diploma in Software Technology</strong> – Intelliage
+                    Trainings
+                </p>
+            </div>
+        </section>
 
-<!-- Education -->
-<section id="education" class="reveal">
-    <h2 class="section-title">Education</h2>
-    <p><strong>Bachelor in Computer Science</strong> – Virtual University</p>
-    <p><strong>Diploma in Software Technology</strong> – Intelliage Trainings</p>
-</section>
+        <!-- Projects -->
 
-<!-- Contact -->
-<section id="contact" class="reveal">
-    <h2 class="section-title">Contact</h2>
-    <div class="contact-box">
-        <p>Email: imran22arif@gmail.com</p>
-        <p>Phone: 0307-0047166</p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/imran-arif-3b63952b9/" target="_blank" style="color:var(--primary);">Visit Profile</a></p>
-    </div>
-</section>
+        <!-- Contact -->
+        <section id="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="d-flex contact-grid">
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p style="font-size: 20px">imran22arif@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Phone</h3>
+                    <p style="font-size: 20px">+92 307 0047166</p>
+                </div>
+                <div class="contact-item">
+                    <h3>LinkedIn</h3>
+                    <a
+                        href="https://www.linkedin.com/in/imran-arif-3b63952b9/"
+                        target="_blank"
+                        style="color: var(--accent); font-size: 20px"
+                        >linkedin.com/in/imran-arif</a
+                    >
+                </div>
+            </div>
+        </section>
 
-<script>
-// Particles
-tsParticles.load("tsparticles", {
-    particles:{number:{value:80}, color:{value:"#4cdfff"}, shape:{type:"circle"}, opacity:{value:0.6}, size:{value:3, random:true}, move:{enable:true, speed:1.5, direction:"none", outMode:"bounce"}},
-    interactivity:{events:{onHover:{enable:true, mode:"repulse"}, onClick:{enable:true, mode:"push"}}},
-    detectRetina:true
-});
+        <!-- EPIC FOOTER -->
+        <footer>
+            <div class="footer-content">
+                <h2 class="footer-message">
+                    Let's Build Something<br />Extraordinary Together
+                </h2>
+                <p class="footer-sub">
+                    Your vision deserves the best execution. I'm ready when you
+                    are.
+                </p>
+                <a
+                    href="mailto:imran22arif@gmail.com?subject=Hey Imran! Let's Work Together&body=Hi Imran,%0A%0AI just came from your portfolio — it's absolutely stunning!%0AI have a project in mind and would love to work with you.%0A%0AThanks,%0A"
+                    class="hire-btn"
+                >
+                    Say Hello – Let's Make It Happen
+                </a>
+                <p class="copyright">
+                    © 2025-26 Imran Arif • Built with passion & code
+                </p>
+            </div>
+        </footer>
 
-// Scroll reveal
-const reveals=document.querySelectorAll(".reveal");
-window.addEventListener("scroll",()=>{
-    reveals.forEach(el=>{
-        if(el.getBoundingClientRect().top<window.innerHeight-100){
-            el.classList.add("active");
-        }
-    });
-});
+        <script>
+            // Cursor
+            const cursor = document.querySelector(".cursor");
+            document.addEventListener("mousemove", (e) => {
+                cursor.style.left = e.clientX + "px";
+                cursor.style.top = e.clientY + "px";
+            });
 
-// Theme toggle
-const toggleBtn=document.getElementById("theme-toggle");
-const bodyEl=document.body;
-function setTheme(mode){
-    bodyEl.className=mode;
-    toggleBtn.textContent=mode==="dark"?"Light Mode":"Dark Mode";
-    localStorage.setItem("theme",mode);
-}
-toggleBtn.onclick=()=>setTheme(bodyEl.classList.contains("dark")?"light":"dark");
-setTheme(localStorage.getItem("theme")||"dark");
+            // Theme Toggle
+            const toggle = document.getElementById("theme-toggle");
+            toggle.onclick = () => {
+                document.body.classList.toggle("light");
+                toggle.textContent = document.body.classList.contains("light")
+                    ? "Dark Mode"
+                    : "Light Mode";
+                localStorage.setItem(
+                    "theme",
+                    document.body.classList.contains("light") ? "light" : "dark"
+                );
+            };
+            if (localStorage.getItem("theme") === "light") {
+                document.body.classList.add("light");
+                toggle.textContent = "Dark Mode";
+            }
 
-// Project slider auto
-const sliderInner = document.getElementById('project-slider-inner');
-let currentIndex = 0;
-const totalProjects = sliderInner.children.length;
-const visible = 3;
+            // Particles (auto-adjusts to theme)
+            tsParticles.load("tsparticles", {
+                particles: {
+                    number: { value: 80 },
+                    color: {
+                        value: document.body.classList.contains("light")
+                            ? ["#0068ff", "#7c3aed", "#ec4899"]
+                            : ["#00d4ff", "#8b5cf6", "#ff2e96"],
+                    },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.6 },
+                    size: { value: 4 },
+                    links: {
+                        enable: true,
+                        distance: 140,
+                        color: document.body.classList.contains("light")
+                            ? "#0068ff"
+                            : "#00d4ff",
+                        opacity: 0.3,
+                    },
+                    move: { enable: true, speed: 2 },
+                },
+                interactivity: {
+                    events: { onHover: { enable: true, mode: "repulse" } },
+                },
+            });
 
-setInterval(() => {
-    currentIndex++;
-    if(currentIndex > totalProjects - visible) currentIndex = 0;
-    sliderInner.style.transform = `translateX(-${(100/visible)*currentIndex}%)`;
-}, 1000);
-</script>
-</body>
+            // Animations
+            gsap.to(".hero h1", {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: "power4.out",
+            });
+            gsap.to(".hero p", {
+                opacity: 1,
+                y: 0,
+                delay: 0.6,
+                duration: 1,
+                ease: "power3.out",
+            });
+            gsap.to(".cta-btn", {
+                opacity: 1,
+                y: 0,
+                delay: 1.2,
+                duration: 1,
+                ease: "back.out(1.7)",
+            });
+            gsap.utils
+                .toArray(
+                    ".section-title, .about-img, .skill, .experience-item, .contact-item, .footer-content"
+                )
+                .forEach((el) => {
+                    gsap.to(el, {
+                        scrollTrigger: { trigger: el, start: "top 80%" },
+                        opacity: 1,
+                        y: 0,
+                        duration: 1.4,
+                        ease: "power3.out",
+                        stagger: 0.2,
+                    });
+                });
+
+            // Projects Carousel
+            const projects = [
+                {
+                    title: "Buildors CRM",
+                    desc: "AI-powered CRM with tasks, pipelines, voice & SMS",
+                    link: "https://buildors.com",
+                },
+                {
+                    title: "CVMeetup",
+                    desc: "Job platform with video profiles & AI CV scanning",
+                    link: "https://cvmeetup.com",
+                },
+                {
+                    title: "Mr. Furniture",
+                    desc: "E-commerce with Stripe & real-time tracking",
+                    link: "https://mrfurnitureusa.com",
+                },
+                {
+                    title: "Bulk Email System",
+                    desc: "High-volume email delivery with warmup",
+                    link: "https://emails.oddial.com",
+                },
+                {
+                    title: "ODShop",
+                    desc: "Instant store builder with themes & inventory",
+                    link: "https://odshops.com",
+                },
+            ];
+            const track = document.getElementById("projectTrack");
+            projects.concat(projects).forEach((p) => {
+                track.innerHTML += `<div class="project-card tilt"><div class="project-info"><h3>${p.title}</h3><p>${p.desc}</p><a href="${p.link}" target="_blank" style="color:var(--accent); font-weight:600;">View Live →</a></div></div>`;
+            });
+            let scrollPos = 0;
+            setInterval(() => {
+                scrollPos += 460;
+                if (scrollPos >= track.scrollWidth / 2) scrollPos = 0;
+                track.style.transform = `translateX(-${scrollPos}px)`;
+            }, 3500);
+
+            VanillaTilt.init(document.querySelectorAll(".tilt"), {
+                max: 20,
+                speed: 400,
+                glare: true,
+                "max-glare": 0.4,
+            });
+        </script>
+    </body>
 </html>
