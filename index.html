@@ -1,231 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Imran Arif - Full Stack Web Developer Portfolio</title>
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/3344/3344358.png" type="image/png">
+
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<!-- Animate.css for ready-to-use animations -->
+<!-- Animate.css -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
+<!-- Particles.js -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+
 <style>
-:root {
-    --primary-gradient: linear-gradient(90deg, #4cdfff, #0f9fff);
+:root{
     --primary: #4cdfff;
-    --dark-bg: #0d0d0d;
-    --dark-card: #1a1a1a;
-    --dark-text: #ffffff;
-
-    --light-bg: #ffffff;
-    --light-card: #f3f3f3;
-    --light-text: #121212;
-
+    --primary-gradient: linear-gradient(90deg,#4cdfff,#0f9fff);
+    --dark-bg: #0a0a0a;
+    --dark-card: #111;
+    --dark-text: #fff;
     --transition: 0.5s ease-in-out;
 }
 
-* {
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    margin: 0;
-    font-family: "Poppins", sans-serif;
+body{
+    font-family:'Poppins',sans-serif;
+    background: var(--dark-bg);
+    color: var(--dark-text);
     transition: background var(--transition), color var(--transition);
     scroll-behavior: smooth;
 }
 
-body.dark {
-    background: var(--dark-bg);
-    color: var(--dark-text);
-}
-
-body.light {
-    background: var(--light-bg);
-    color: var(--light-text);
-}
-
 /* Navbar */
-nav {
+nav{
     position: fixed;
-    width: 100%;
-    top: 0;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    border-bottom: 1px solid #44444444;
-    transition: all 0.3s;
+    width:100%;
+    top:0;
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    backdrop-filter:blur(10px);
+    z-index:1000;
+    border-bottom:1px solid #44444444;
 }
-
-nav a {
-    margin-left: 20px;
-    color: var(--primary);
-    text-decoration: none;
-    font-size: 15px;
-    position: relative;
-    transition: 0.3s;
+nav a{
+    margin-left:20px;
+    color:var(--primary);
+    text-decoration:none;
+    font-weight:500;
+    font-size:15px;
+    position:relative;
+    transition:0.3s;
 }
-nav a::after {
-    content: '';
-    display: block;
-    height: 2px;
-    width: 0;
+nav a::after{
+    content:'';
+    display:block;
+    height:2px;
+    width:0;
     background: var(--primary);
-    transition: 0.3s;
-    position: absolute;
-    bottom: -5px;
-    left: 0;
+    position:absolute;
+    bottom:-5px;
+    left:0;
+    transition:0.3s;
 }
-nav a:hover::after {
-    width: 100%;
-}
+nav a:hover::after{ width:100%; }
 
-#theme-toggle {
-    cursor: pointer;
-    padding: 8px 14px;
+#theme-toggle{
+    cursor:pointer;
+    padding:8px 14px;
     background: var(--primary);
-    border-radius: 7px;
-    color: black;
-    font-size: 14px;
-    border: none;
-    transition: transform 0.3s;
+    border-radius:7px;
+    color:black;
+    font-size:14px;
+    border:none;
+    transition:0.3s;
 }
-#theme-toggle:hover {
-    transform: scale(1.1);
-}
+#theme-toggle:hover{ transform:scale(1.1); }
 
-/* Hero Section */
-.hero {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    padding: 0 20px;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: #fff;
-    overflow: hidden;
+/* Hero */
+.hero{
+    position:relative;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    overflow:hidden;
 }
-
-.hero h1 {
-    font-size: 50px;
-    margin: 0;
-    font-weight: 700;
+#tsparticles{
+    position:absolute;
+    width:100%;
+    height:100%;
+    z-index:0;
+}
+.hero-content{
+    position:relative;
+    z-index:1;
+}
+.hero h1{
+    font-size:60px;
+    font-weight:700;
     background: var(--primary-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
     animation: floatText 3s ease-in-out infinite alternate;
 }
-@keyframes floatText {
-    0% { transform: translateY(0px); }
-    100% { transform: translateY(-10px); }
+@keyframes floatText{
+    0%{ transform:translateY(0px);}
+    100%{ transform:translateY(-15px);}
 }
+.typewriter{
+    color:var(--primary);
+    font-size:24px;
+    margin-top:15px;
+    overflow:hidden;
+    border-right:.15em solid var(--primary);
+    white-space:nowrap;
+    animation: typing 3s steps(30,end), blink-caret .75s step-end infinite;
+}
+@keyframes typing{from{width:0}to{width:100%}}
+@keyframes blink-caret{50%{border-color:transparent}}
 
-.typewriter {
-    color: #4cdfff;
-    font-size: 22px;
-    margin-top: 10px;
-    overflow: hidden;
-    border-right: .15em solid #4cdfff;
-    white-space: nowrap;
-    animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
+/* Sections */
+section{
+    padding:100px 10%;
 }
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-@keyframes blink-caret {
-    50% { border-color: transparent; }
-}
-
-/* Section Titles */
-section {
-    padding: 100px 10%;
-}
-
-.section-title {
-    font-size: 36px;
-    margin-bottom: 30px;
+.section-title{
+    font-size:38px;
+    margin-bottom:40px;
     background: var(--primary-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
-/* Cards */
-.project-card, .contact-box {
-    padding: 20px;
-    border-radius: 12px;
-    transition: 0.3s;
-    border: 1px solid #44444455;
-    cursor: pointer;
-}
-body.dark .project-card, body.dark .contact-box {
+/* Project Cards */
+.project-card, .contact-box{
+    padding:25px;
+    border-radius:12px;
+    transition:0.3s;
+    border:1px solid #44444455;
+    cursor:pointer;
     background: var(--dark-card);
 }
-body.light .project-card, body.light .contact-box {
-    background: var(--light-card);
+.project-card:hover{
+    transform:translateY(-12px) scale(1.03);
+    box-shadow:0 0 40px #4cdfff99;
 }
-.project-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 0 30px #4cdfff88;
+.project-card h3{
+    transition:transform 0.3s;
 }
-.project-card h3 {
-    transition: transform 0.3s;
-}
-.project-card:hover h3 {
-    transform: scale(1.05);
-}
+.project-card:hover h3{ transform:scale(1.05); }
 
 /* Skills */
-.skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
 }
-.skill {
-    padding: 10px 18px;
-    border-radius: 50px;
-    font-size: 14px;
-    background: #222;
-    border: 1px solid #333;
-    transition: 0.3s;
+.skill{
+    padding:12px 20px;
+    border-radius:50px;
+    font-size:14px;
+    background:#222;
+    border:1px solid #333;
+    transition:0.3s;
+    animation: floatSkill 4s ease-in-out infinite alternate;
 }
-body.light .skill {
-    background: #e2e2e2;
-    border-color: #cccccc;
+@keyframes floatSkill{
+    0%{ transform:translateY(0px);}
+    100%{ transform:translateY(-5px);}
 }
-.skill:hover {
-    background: var(--primary);
-    color: #000;
-    transform: scale(1.1);
+.skill:hover{
+    background:var(--primary);
+    color:black;
+    transform:scale(1.1);
 }
 
-/* Reveal animations */
-.reveal {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s ease;
+/* Reveal */
+.reveal{
+    opacity:0;
+    transform:translateY(50px);
+    transition:all 0.8s ease;
 }
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
 }
 
 /* Image hover */
-img {
+img{
     transition: transform 0.5s;
 }
-img:hover {
-    transform: scale(1.05) rotate(-1deg);
-}
+img:hover{ transform: scale(1.05) rotate(-1deg); }
+
 </style>
 </head>
-<body class="dark">
+<body>
 
 <!-- Navbar -->
 <nav>
@@ -243,8 +223,11 @@ img:hover {
 
 <!-- Hero -->
 <section class="hero">
-    <h1>Hello, I'm Imran Arif</h1>
-    <div class="typewriter">Full Stack Web Developer</div>
+    <div id="tsparticles"></div>
+    <div class="hero-content">
+        <h1>Hello, I'm Imran Arif</h1>
+        <div class="typewriter">Full Stack Web Developer</div>
+    </div>
 </section>
 
 <!-- About -->
@@ -253,10 +236,9 @@ img:hover {
     <div style="display:flex;flex-wrap:wrap;gap:30px;align-items:center;">
         <img src="https://scontent.flhe41-1.fna.fbcdn.net/v/t39.30808-6/472375241_2018574985236821_7956161804888883337_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=TTe_f7zckYYQ7kNvwEKToIX&_nc_oc=AdlWH4aZQrH55UuSWMeMtV22HLg97q7ZEqn_bUh9Ws6okbDlXmh3xGWMimGK0Gcg47s&_nc_zt=23&_nc_ht=scontent.flhe41-1.fna&_nc_gid=gzHc2OJjPvLeQ0tBoWuxHQ&oh=00_AfhLXUhXYfeIJH-0hzv_Q2bhy4d1Pne1NgE8LJ-wetoQeQ&oe=692EE038" style="width:180px;height:180px;border-radius:50%;object-fit:cover;border:3px solid var(--primary);" />
         <div style="flex:1;">
-            <p>I am a passionate and highly motivated <strong>Full Stack Web Developer</strong> with hands-on experience building modern web applications, CRM systems, SaaS dashboards, automation tools and AI-powered platforms.</p>
-            <p>My expertise includes <strong>Laravel, Vue.js, REST APIs, real-time features, scraping, cloud deployment, payment integrations, email/SMS systems, microservices, and AI APIs</strong>.</p>
-            <p>I specialize in creating performance-optimized, scalable, and secure web systems designed for business growth. I enjoy solving deep technical problems, enhancing product workflows, building automation, and delivering solutions that save time and generate real results.</p>
-            <p>I am always focused on clean code, modern UI/UX, teamwork, and long-term maintainability.</p>
+            <p>I am a passionate <strong>Full Stack Web Developer</strong> building modern web apps, CRM systems, AI tools.</p>
+            <p>Expertise: <strong>Laravel, Vue.js, APIs, Realtime Features, Scraping, Cloud Deployment, AI APIs</strong>.</p>
+            <p>Focus: Performance, scalability, maintainable code, modern UI/UX, and teamwork.</p>
         </div>
     </div>
 </section>
@@ -271,9 +253,8 @@ img:hover {
         <div class="skill">PHP</div><div class="skill">Laravel</div><div class="skill">Livewire</div>
         <div class="skill">MySQL</div><div class="skill">REST APIs</div>
         <div class="skill">Stripe</div><div class="skill">PayPal</div><div class="skill">Twilio</div>
-        <div class="skill">Mailgun</div><div class="skill">Firebase</div><div class="skill">Google Maps</div>
-        <div class="skill">Gmail API</div><div class="skill">OpenAI API</div><div class="skill">ElevenLabs API</div>
-        <div class="skill">Scraping</div><div class="skill">Linux Server</div><div class="skill">cPanel/VPS</div>
+        <div class="skill">Mailgun</div><div class="skill">Firebase</div><div class="skill">OpenAI API</div>
+        <div class="skill">ElevenLabs API</div><div class="skill">Scraping</div><div class="skill">Linux Server</div>
     </div>
 </section>
 
@@ -283,28 +264,18 @@ img:hover {
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;">
         <div class="project-card">
             <h3>Buildors CRM</h3>
-            <p>A complete automation CRM with tasks, pipelines, AI chat/voice, email/SMS marketing, invoices & integrations.</p>
+            <p>Automation CRM with tasks, pipelines, AI chat/voice, email/SMS marketing, invoices & integrations.</p>
             <a href="https://buildors.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
         </div>
         <div class="project-card">
             <h3>CVMeetup</h3>
-            <p>Smart job-matching platform with video profiles, employer dashboard, AI CV scanning & messaging.</p>
+            <p>Job matching platform with video profiles, employer dashboard, AI CV scanning & messaging.</p>
             <a href="https://cvmeetup.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
         </div>
         <div class="project-card">
-            <h3>Mr. Furniture USA</h3>
-            <p>E-commerce website with filtering, cart, order tracking & full Stripe integration.</p>
+            <h3>Mr. Furniture</h3>
+            <p>E-commerce with cart, order tracking & Stripe integration.</p>
             <a href="https://mrfurnitureusa.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
-        </div>
-        <div class="project-card">
-            <h3>Bulk Email System</h3>
-            <p>High-volume email rotation system with warmup, analytics, logs & multi-provider support.</p>
-            <a href="https://emails.oddial.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
-        </div>
-        <div class="project-card">
-            <h3>Odshop – Store Builder</h3>
-            <p>Instant online store builder with themes, checkout, inventory & shop admin panel.</p>
-            <a href="https://odshops.com" target="_blank" style="color:var(--primary);">Visit Project →</a>
         </div>
     </div>
 </section>
@@ -312,14 +283,7 @@ img:hover {
 <!-- Experience -->
 <section id="experience" class="reveal">
     <h2 class="section-title">Experience</h2>
-    <div class="experience-item">
-        <h3>Intelliage Solutions – Full Stack Web Developer (2023 – Present)</h3>
-        <ul>
-            <li>Lead/full-stack developer on multiple projects including Mr. Furniture, ODShop, Bulk Email System, Buildors CRM, CVMeetup.</li>
-            <li>Handled backend (Laravel), frontend (Vue.js/Ant Design Vue), API integrations, and server deployment.</li>
-            <li>Focused on performance, scalability, maintainable architecture, and clean UI/UX.</li>
-        </ul>
-    </div>
+    <p>Full Stack Developer at Intelliage Solutions (2023 – Present). Led multiple projects including Buildors CRM, CVMeetup, ODShop, Bulk Email System.</p>
 </section>
 
 <!-- Education -->
@@ -339,29 +303,43 @@ img:hover {
     </div>
 </section>
 
-<!-- Scripts -->
 <script>
-// Scroll reveal animation
-const reveals = document.querySelectorAll(".reveal");
-window.addEventListener("scroll", () => {
-    reveals.forEach(el => {
-        if(el.getBoundingClientRect().top < window.innerHeight - 100){
+// Particles
+tsParticles.load("tsparticles", {
+    particles:{
+        number:{value:80},
+        color:{value:"#4cdfff"},
+        shape:{type:"circle"},
+        opacity:{value:0.6},
+        size:{value:3, random:true},
+        move:{enable:true, speed:1.5, direction:"none", outMode:"bounce"}
+    },
+    interactivity:{
+        events:{onHover:{enable:true, mode:"repulse"}, onClick:{enable:true, mode:"push"}}
+    },
+    detectRetina:true
+});
+
+// Scroll reveal
+const reveals=document.querySelectorAll(".reveal");
+window.addEventListener("scroll",()=>{
+    reveals.forEach(el=>{
+        if(el.getBoundingClientRect().top<window.innerHeight-100){
             el.classList.add("active");
         }
     });
 });
 
 // Theme toggle
-const toggleBtn = document.getElementById("theme-toggle");
-const bodyEl = document.body;
+const toggleBtn=document.getElementById("theme-toggle");
+const bodyEl=document.body;
 function setTheme(mode){
-    bodyEl.className = mode;
-    toggleBtn.textContent = mode === "dark" ? "Light Mode" : "Dark Mode";
-    localStorage.setItem("theme", mode);
+    bodyEl.className=mode;
+    toggleBtn.textContent=mode==="dark"?"Light Mode":"Dark Mode";
+    localStorage.setItem("theme",mode);
 }
-toggleBtn.onclick = () => setTheme(bodyEl.classList.contains("dark") ? "light" : "dark");
-setTheme(localStorage.getItem("theme") || "dark");
+toggleBtn.onclick=()=>setTheme(bodyEl.classList.contains("dark")?"light":"dark");
+setTheme(localStorage.getItem("theme")||"dark");
 </script>
-
 </body>
 </html>
